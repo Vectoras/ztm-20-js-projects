@@ -7,7 +7,7 @@
     {
       "format": "expanded",
       "extensionName": ".css",
-      "savePath": "/css"
+      "savePath": "../"
     }
   ],
   "editor.wordWrapColumn": 90,
