@@ -47,9 +47,9 @@ body #container button:disabled {
 @media screen and (max-width: 1000px) {
   body #container {
     background-size: cover;
-    background-position: center center;
+    background-position: center -15vh;
     flex-flow: column nowrap;
     justify-content: flex-end;
-    padding-bottom: 10vh;
+    padding-bottom: 13vh;
   }
 }
