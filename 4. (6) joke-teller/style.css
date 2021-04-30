@@ -51,5 +51,6 @@ body #container button:disabled {
     flex-flow: column nowrap;
     justify-content: flex-end;
     padding-bottom: 13vh;
+    padding-left: 0;
   }
 }
