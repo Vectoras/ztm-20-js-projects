@@ -14,12 +14,13 @@ let changeTheme = (theme) => {
   if (theme === "dark") {
     document.documentElement.setAttribute("data-color-mode", "dark");
     themeModeDisplayArea.textContent = "Dark Mode";
-    console.log(svgColor);
     updateColorOnSvg("#009c99");
+    localStorage.setItem("color-mode", "dark");
   } else {
     document.documentElement.removeAttribute("data-color-mode");
     themeModeDisplayArea.textContent = "Light Mode";
     updateColorOnSvg("#ff6366");
+    localStorage.setItem("color-mode", "light");
   }
 };
 
@@ -31,3 +32,9 @@ changeThemeButton.addEventListener("change", () => {
     changeTheme("light");
   }
 });
+
+// onLoad
+if (localStorage.getItem("color-mode") === "dark") {
+  changeTheme("dark");
+  changeThemeButton.setAttribute("checked", "checked");
+}
