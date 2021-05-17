@@ -1,8 +1,8 @@
 // Confetti.js - downloaded from https://www.cssscript.com/confetti-falling-animation/
 
 var confetti = {
-  maxCount: 150, //set max confetti count
-  speed: 2, //set the particle animation speed
+  maxCount: 100, //set max confetti count
+  speed: 1, //set the particle animation speed
   frameInterval: 15, //the confetti animation frame interval in milliseconds
   alpha: 1.0, //the alpha opacity of the confetti (between 0 and 1, where 1 is opaque and 0 is invisible)
   gradient: false, //whether to use gradients for the confetti particles
@@ -26,12 +26,7 @@ confetti.togglePause = toggleConfettiPause;
 confetti.isPaused = isConfettiPaused;
 confetti.remove = removeConfetti;
 confetti.isRunning = isConfettiRunning;
-var supportsAnimationFrame =
-  window.requestAnimationFrame ||
-  window.webkitRequestAnimationFrame ||
-  window.mozRequestAnimationFrame ||
-  window.oRequestAnimationFrame ||
-  window.msRequestAnimationFrame;
+var supportsAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame;
 var colors = [
   "rgba(30,144,255,",
   "rgba(107,142,35,",
@@ -55,10 +50,8 @@ var waveAngle = 0;
 var context = null;
 
 function resetParticle(particle, width, height) {
-  particle.color =
-    colors[(Math.random() * colors.length) | 0] + (confetti.alpha + ")");
-  particle.color2 =
-    colors[(Math.random() * colors.length) | 0] + (confetti.alpha + ")");
+  particle.color = colors[(Math.random() * colors.length) | 0] + (confetti.alpha + ")");
+  particle.color2 = colors[(Math.random() * colors.length) | 0] + (confetti.alpha + ")");
   particle.x = Math.random() * width;
   particle.y = Math.random() * height - height;
   particle.diameter = Math.random() * 10 + 5;
@@ -123,10 +116,7 @@ function startConfetti(timeout, min, max) {
   if (canvas === null) {
     canvas = document.createElement("canvas");
     canvas.setAttribute("id", "confetti-canvas");
-    canvas.setAttribute(
-      "style",
-      "display:block;z-index:999999;pointer-events:none;position:fixed;top:0"
-    );
+    canvas.setAttribute("style", "display:block;z-index:999999;pointer-events:none;position:fixed;top:0");
     document.body.prepend(canvas);
     canvas.width = width;
     canvas.height = height;
@@ -154,8 +144,7 @@ function startConfetti(timeout, min, max) {
       }
     } else count = particles.length + min;
   } else if (max) count = particles.length + max;
-  while (particles.length < count)
-    particles.push(resetParticle({}, width, height));
+  while (particles.length < count) particles.push(resetParticle({}, width, height));
   streamingConfetti = true;
   pause = false;
   runAnimation();
@@ -216,13 +205,11 @@ function updateParticles() {
     else {
       particle.tiltAngle += particle.tiltAngleIncrement;
       particle.x += Math.sin(waveAngle) - 0.5;
-      particle.y +=
-        (Math.cos(waveAngle) + particle.diameter + confetti.speed) * 0.5;
+      particle.y += (Math.cos(waveAngle) + particle.diameter + confetti.speed) * 0.5;
       particle.tilt = Math.sin(particle.tiltAngle) * 15;
     }
     if (particle.x > width + 20 || particle.x < -20 || particle.y > height) {
-      if (streamingConfetti && particles.length <= confetti.maxCount)
-        resetParticle(particle, width, height);
+      if (streamingConfetti && particles.length <= confetti.maxCount) resetParticle(particle, width, height);
       else {
         particles.splice(i, 1);
         i--;
