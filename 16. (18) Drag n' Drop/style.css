@@ -50,7 +50,7 @@ ul {
 
 /* Columns */
 .drag-column {
-
+  flex: 1;
   margin: 0 10px;
   position: relative;
   background-color: rgba(0, 0, 0, 0.4);
@@ -90,6 +90,9 @@ ul {
 .custom-scroll {
   overflow-y: auto;
   max-height: 75vh;
+  scrollbar-color:  rgba(0, 0, 0, 0.8) rgba(255, 255, 255, 0.3);
+  scrollbar-width: thin;
+  scrollbar-
 }
 
 .custom-scroll::-webkit-scrollbar-track {
