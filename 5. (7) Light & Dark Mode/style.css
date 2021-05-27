@@ -1,0 +1,111 @@
+@font-face {
+  font-family: 'Marcellus';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/marcellus/v8/wEO_EBrOk8hQLDvIAF8FUQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'New Tegomin';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/newtegomin/v5/SLXMc1fV7Gd9USdBAfPlqfN0.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/worksans/v9/QGY_z_wNahGAdqQ43RhVcIgYT2Xz5u32K0nXNig.ttf) format('truetype');
+}
+:root {
+  --text-color: #303030;
+  --bg-color: whitesmoke;
+  --icon-color: #ff6366;
+  --header-font: Marcellus, sans-serif;
+  --paragraph-font: Work Sans, sans-serif;
+}
+[data-color-mode="dark"] {
+  --text-color: whitesmoke;
+  --bg-color: #303030;
+  --icon-color: #009c99;
+  --header-font: New Tegomin, sans-serif;
+  --paragraph-font: New Tegomin, sans-serif;
+}
+html,
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 1px 1.5rem 0;
+  min-height: 100vh;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+body .container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+body .container #swap-colors {
+  height: 3rem;
+  font-family: var(--header-font);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+body .container #swap-colors .color-switch {
+  position: relative;
+  display: inline-block;
+  height: 26px;
+  width: 3rem;
+  cursor: pointer;
+}
+body .container #swap-colors .color-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+body .container #swap-colors .color-switch input:checked + span::before {
+  left: 23px;
+}
+body .container #swap-colors .color-switch span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: var(--icon-color);
+  border-radius: 13px;
+}
+body .container #swap-colors .color-switch span::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 2px;
+  height: 22.1px;
+  width: 22.1px;
+  border-radius: 50%;
+  background: white;
+  transition: 0.4s;
+}
+body .container h1 {
+  font-family: var(--header-font);
+  font-size: 3rem;
+}
+body .container p {
+  font-family: var(--paragraph-font);
+  font-size: 1.3rem;
+}
+body .container a {
+  color: var(--icon-color);
+}
+body .container svg {
+  width: 60%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}

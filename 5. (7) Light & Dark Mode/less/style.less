@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Marcellus&family=New+Tegomin&family=Work+Sans&display=swap");
+
+// Color variables
+:root {
+  --text-color: #303030;
+  --bg-color: whitesmoke;
+  --icon-color: #ff6366;
+  --header-font: Marcellus, sans-serif;
+  --paragraph-font: Work Sans, sans-serif;
+}
+
+[data-color-mode="dark"] {
+  --text-color: whitesmoke;
+  --bg-color: #303030;
+  --icon-color: #009c99;
+  --header-font: New Tegomin, sans-serif;
+  --paragraph-font: New Tegomin, sans-serif;
+}
+
+html,
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1px 1.5rem 0;
+  min-height: 100vh;
+  background: var(--bg-color);
+  color: var(--text-color);
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+
+    #swap-colors {
+      height: 3rem;
+      font-family: var(--header-font);
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+
+      .color-switch {
+        @height: 26px;
+        position: relative;
+        display: inline-block;
+        height: @height;
+        width: 3rem;
+        cursor: pointer;
+
+        input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+
+          &:checked + span::before {
+            left: 23px;
+          }
+        }
+
+        span {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background: var(--icon-color);
+          border-radius: (@height / 2);
+
+          &::before {
+            content: "";
+            position: absolute;
+            left: 3px;
+            top: 2px;
+            height: (@height * 0.85);
+            width: (@height * 0.85);
+            border-radius: 50%;
+            background: white;
+            transition: 0.4s;
+          }
+        }
+      }
+    }
+
+    h1 {
+      font-family: var(--header-font);
+      font-size: 3rem;
+    }
+
+    p {
+      font-family: var(--paragraph-font);
+      font-size: 1.3rem;
+    }
+
+    a {
+      color: var(--icon-color);
+    }
+
+    svg {
+      width: 60%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
